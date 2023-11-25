@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  SPECIAL
+  USER
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  password  String
+  email     String   @unique
+  role      Role     @default(USER)
+  lastLogin DateTime @default(now())
+  sales     Sale[]
+}
+
+model Product {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price      Float
+  image      String?
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  sales      Sale[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
+}
+
+model Sale {
+  id         Int      @id @default(autoincrement())
+  quantity   Int
+  totalPrice Int
+  product    Product  @relation(fields: [productId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+  productId  Int
+  userId     Int
+  createdAt  DateTime @default(now())
+}

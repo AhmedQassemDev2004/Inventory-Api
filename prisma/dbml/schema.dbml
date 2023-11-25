@@ -1,0 +1,54 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table User {
+  id Int [pk, increment]
+  name String [not null]
+  password String [not null]
+  email String [unique, not null]
+  role Role [not null, default: 'USER']
+  lastLogin DateTime [default: `now()`, not null]
+  sales Sale [not null]
+}
+
+Table Product {
+  id Int [pk, increment]
+  name String [not null]
+  price Float [not null]
+  image String
+  category Category [not null]
+  categoryId Int [not null]
+  sales Sale [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+}
+
+Table Category {
+  id Int [pk, increment]
+  name String [not null]
+  products Product [not null]
+}
+
+Table Sale {
+  id Int [pk, increment]
+  quantity Int [not null]
+  totalPrice Int [not null]
+  product Product [not null]
+  user User [not null]
+  productId Int [not null]
+  userId Int [not null]
+  createdAt DateTime [default: `now()`, not null]
+}
+
+Enum Role {
+  ADMIN
+  SPECIAL
+  USER
+}
+
+Ref: Product.categoryId > Category.id
+
+Ref: Sale.productId > Product.id
+
+Ref: Sale.userId > User.id
