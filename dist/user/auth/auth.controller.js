@@ -18,6 +18,10 @@ const local_auth_guard_1 = require("./guards/local-auth.guard");
 const register_dto_1 = require("../dto/register.dto");
 const auth_service_1 = require("./auth.service");
 const public_decorator_1 = require("./decorators/public.decorator");
+const swagger_1 = require("@nestjs/swagger");
+const user_response_dto_1 = require("../dto/user-response.dto");
+class LoginExample {
+}
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -48,7 +52,22 @@ exports.AuthController = AuthController;
 __decorate([
     (0, public_decorator_1.Public)(),
     (0, common_1.UseGuards)(local_auth_guard_1.LocalAuthGuard),
+    (0, common_1.HttpCode)(200),
     (0, common_1.Post)("/login"),
+    (0, swagger_1.ApiBody)({
+        schema: { $ref: (0, swagger_1.getSchemaPath)(LoginExample) },
+        required: true,
+        examples: {
+            'application/json': {
+                value: { email: 'user@example.com', password: 'password123' },
+            },
+        },
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'User authenticated successfully',
+        type: user_response_dto_1.UserResponseDto,
+    }),
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -56,7 +75,13 @@ __decorate([
 ], AuthController.prototype, "login", null);
 __decorate([
     (0, public_decorator_1.Public)(),
+    (0, common_1.HttpCode)(201),
     (0, common_1.Post)("/register"),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'User authenticated successfully',
+        type: user_response_dto_1.UserResponseDto,
+    }),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
@@ -65,12 +90,14 @@ __decorate([
 ], AuthController.prototype, "register", null);
 __decorate([
     (0, common_1.Post)("/logout"),
+    (0, common_1.HttpCode)(200),
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "logout", null);
 exports.AuthController = AuthController = __decorate([
+    (0, swagger_1.ApiTags)("Authentication"),
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);

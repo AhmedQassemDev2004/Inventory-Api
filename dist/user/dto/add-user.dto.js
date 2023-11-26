@@ -10,25 +10,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddUserDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const client_1 = require("@prisma/client");
 const class_validator_1 = require("class-validator");
 class AddUserDto {
 }
 exports.AddUserDto = AddUserDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "User 1"
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddUserDto.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "user1@gmail.com"
+    }),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], AddUserDto.prototype, "email", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "12345"
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddUserDto.prototype, "password", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "ADMIN"
+    }),
     (0, class_validator_1.IsEnum)(client_1.Role),
     __metadata("design:type", String)
 ], AddUserDto.prototype, "role", void 0);

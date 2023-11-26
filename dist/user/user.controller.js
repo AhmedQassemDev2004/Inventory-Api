@@ -21,6 +21,8 @@ const change_password_dto_1 = require("./dto/change-password.dto");
 const role_decorator_1 = require("./auth/decorators/role.decorator");
 const client_1 = require("@prisma/client");
 const add_user_dto_1 = require("./dto/add-user.dto");
+const swagger_1 = require("@nestjs/swagger");
+const user_response_dto_1 = require("./dto/user-response.dto");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -49,7 +51,11 @@ let UserController = class UserController {
 };
 exports.UserController = UserController;
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: user_response_dto_1.UserResponseDto
+    }),
     (0, common_1.Put)("/update"),
+    (0, common_1.HttpCode)(200),
     __param(0, (0, user_decorator_1.AuthUser)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -57,8 +63,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "update", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: user_response_dto_1.UserResponseDto
+    }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Put)("/update/:userId"),
+    (0, common_1.HttpCode)(200),
     __param(0, (0, common_1.Param)("userId")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -74,6 +84,9 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "changePassword", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: user_response_dto_1.UserResponseDto
+    }),
     (0, common_1.Get)("/profile"),
     __param(0, (0, user_decorator_1.AuthUser)()),
     __metadata("design:type", Function),
@@ -81,6 +94,9 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "profile", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: [user_response_dto_1.UserResponseDto]
+    }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Get)("/list"),
     __metadata("design:type", Function),
@@ -88,8 +104,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "usersList", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: [user_response_dto_1.UserResponseDto]
+    }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Post)("/add"),
+    (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [add_user_dto_1.AddUserDto]),
@@ -98,12 +118,14 @@ __decorate([
 __decorate([
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Delete)("/delete/:userId"),
+    (0, common_1.HttpCode)(200),
     __param(0, (0, common_1.Param)("userId", common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "deleteUser", null);
 exports.UserController = UserController = __decorate([
+    (0, swagger_1.ApiTags)("User"),
     (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);

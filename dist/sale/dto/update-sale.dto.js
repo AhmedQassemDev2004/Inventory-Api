@@ -10,23 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateSaleDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class UpdateSaleDto {
 }
 exports.UpdateSaleDto = UpdateSaleDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1
+    }),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsPositive)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Number)
 ], UpdateSaleDto.prototype, "quantity", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1
+    }),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsPositive)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Number)
 ], UpdateSaleDto.prototype, "totalPrice", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 1
+    }),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsPositive)(),
     (0, class_validator_1.IsOptional)(),

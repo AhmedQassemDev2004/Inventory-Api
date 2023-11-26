@@ -11,6 +11,11 @@ export declare class SaleController {
             id: number;
         };
         product: {
+            category: {
+                id: number;
+                name: string;
+            };
+        } & {
             id: number;
             name: string;
             price: number;

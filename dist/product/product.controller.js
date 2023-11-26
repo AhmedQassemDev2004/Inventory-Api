@@ -19,6 +19,8 @@ const create_product_dto_1 = require("./dto/create-product.dto");
 const update_product_dto_1 = require("./dto/update-product.dto");
 const client_1 = require("@prisma/client");
 const role_decorator_1 = require("../user/auth/decorators/role.decorator");
+const swagger_1 = require("@nestjs/swagger");
+const product_response_dto_1 = require("./dto/product-response.dto");
 let ProductController = class ProductController {
     constructor(productService) {
         this.productService = productService;
@@ -41,12 +43,18 @@ let ProductController = class ProductController {
 };
 exports.ProductController = ProductController;
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: [product_response_dto_1.ProductResponse]
+    }),
     (0, common_1.Get)("/list"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "list", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: product_response_dto_1.ProductResponse
+    }),
     (0, common_1.Get)("/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __metadata("design:type", Function),
@@ -54,6 +62,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "product", null);
 __decorate([
+    (0, swagger_1.ApiBody)({
+        type: create_product_dto_1.CreateProductDto
+    }),
+    (0, swagger_1.ApiResponse)({
+        type: product_response_dto_1.ProductResponse
+    }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Post)("/create"),
     __metadata("design:type", Function),
@@ -61,6 +75,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "create", null);
 __decorate([
+    (0, swagger_1.ApiBody)({
+        type: update_product_dto_1.UpdateProductDto
+    }),
+    (0, swagger_1.ApiResponse)({
+        type: product_response_dto_1.ProductResponse
+    }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
     (0, common_1.Put)("/update/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
@@ -77,6 +97,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductController.prototype, "delete", null);
 exports.ProductController = ProductController = __decorate([
+    (0, swagger_1.ApiTags)("Product"),
     (0, common_1.Controller)('product'),
     __metadata("design:paramtypes", [product_service_1.ProductService])
 ], ProductController);

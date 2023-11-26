@@ -12,6 +12,11 @@ export declare class SaleService {
             id: number;
         };
         product: {
+            category: {
+                id: number;
+                name: string;
+            };
+        } & {
             id: number;
             name: string;
             price: number;

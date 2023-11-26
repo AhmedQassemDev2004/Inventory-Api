@@ -11,7 +11,11 @@ export class SaleService {
     async list() {
         return this.prismaService.sale.findMany({
             include: {
-                product: true,
+                product: {
+                    include: {
+                        category: true
+                    }
+                },
                 user: {
                     select: {
                         id: true,

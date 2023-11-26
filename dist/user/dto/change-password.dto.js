@@ -10,16 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChangePasswordDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class ChangePasswordDto {
 }
 exports.ChangePasswordDto = ChangePasswordDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "12345"
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], ChangePasswordDto.prototype, "oldPassword", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "123456"
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)

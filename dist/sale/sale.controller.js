@@ -20,6 +20,8 @@ const sale_service_1 = require("./sale.service");
 const create_sale_dto_1 = require("./dto/create-sale.dto");
 const user_decorator_1 = require("../user/auth/decorators/user.decorator");
 const update_sale_dto_1 = require("./dto/update-sale.dto");
+const swagger_1 = require("@nestjs/swagger");
+const sale_response_dto_1 = require("./dto/sale-response.dto");
 let SaleController = class SaleController {
     constructor(saleService) {
         this.saleService = saleService;
@@ -45,24 +47,36 @@ let SaleController = class SaleController {
 };
 exports.SaleController = SaleController;
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: [sale_response_dto_1.SaleResponse]
+    }),
     (0, common_1.Get)("/sale/list"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], SaleController.prototype, "list", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: [sale_response_dto_1.SaleResponse]
+    }),
     (0, common_1.Get)("/sale/list/daily"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], SaleController.prototype, "listDaily", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: [sale_response_dto_1.SaleResponse]
+    }),
     (0, common_1.Get)("/sale/list/monthly"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], SaleController.prototype, "listMonthly", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: sale_response_dto_1.SaleResponse
+    }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Post)("/create"),
     __param(0, (0, user_decorator_1.AuthUser)("id")),
@@ -72,6 +86,9 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SaleController.prototype, "create", null);
 __decorate([
+    (0, swagger_1.ApiResponse)({
+        type: sale_response_dto_1.SaleResponse
+    }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
     (0, common_1.Put)("/update/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
@@ -88,6 +105,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], SaleController.prototype, "delete", null);
 exports.SaleController = SaleController = __decorate([
+    (0, swagger_1.ApiTags)("Sale"),
     (0, common_1.Controller)('sale'),
     __metadata("design:paramtypes", [sale_service_1.SaleService])
 ], SaleController);

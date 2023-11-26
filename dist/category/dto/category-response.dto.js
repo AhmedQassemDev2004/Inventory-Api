@@ -9,37 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisterDto = void 0;
+exports.CategoryResponse = void 0;
 const swagger_1 = require("@nestjs/swagger");
-const class_validator_1 = require("class-validator");
-class RegisterDto {
+class CategoryResponse {
 }
-exports.RegisterDto = RegisterDto;
+exports.CategoryResponse = CategoryResponse;
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: "Test name",
-        required: true
+        example: 12
     }),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], RegisterDto.prototype, "name", void 0);
+    __metadata("design:type", Number)
+], CategoryResponse.prototype, "id", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: "test@gmai.com",
-        required: true
+        example: "Cars"
     }),
-    (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
-], RegisterDto.prototype, "email", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: "test password",
-        required: true,
-        minLength: 5,
-    }),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MinLength)(5),
-    __metadata("design:type", String)
-], RegisterDto.prototype, "password", void 0);
-//# sourceMappingURL=register.dto.js.map
+], CategoryResponse.prototype, "name", void 0);
+//# sourceMappingURL=category-response.dto.js.map

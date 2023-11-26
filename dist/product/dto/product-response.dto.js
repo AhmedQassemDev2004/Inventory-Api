@@ -9,37 +9,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisterDto = void 0;
+exports.ProductResponse = void 0;
 const swagger_1 = require("@nestjs/swagger");
-const class_validator_1 = require("class-validator");
-class RegisterDto {
+const category_response_dto_1 = require("../../category/dto/category-response.dto");
+class ProductResponse {
 }
-exports.RegisterDto = RegisterDto;
+exports.ProductResponse = ProductResponse;
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: "Test name",
-        required: true
+        example: 12
     }),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], RegisterDto.prototype, "name", void 0);
+    __metadata("design:type", Number)
+], ProductResponse.prototype, "id", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: "test@gmai.com",
-        required: true
+        example: "Product"
     }),
-    (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
-], RegisterDto.prototype, "email", void 0);
+], ProductResponse.prototype, "name", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: "test password",
-        required: true,
-        minLength: 5,
+        example: 99
     }),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MinLength)(5),
+    __metadata("design:type", Number)
+], ProductResponse.prototype, "price", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: {
+            id: 1,
+            name: "Cars"
+        }
+    }),
+    __metadata("design:type", category_response_dto_1.CategoryResponse)
+], ProductResponse.prototype, "category", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: "2023-11-26T20:47:12.893Z"
+    }),
     __metadata("design:type", String)
-], RegisterDto.prototype, "password", void 0);
-//# sourceMappingURL=register.dto.js.map
+], ProductResponse.prototype, "createdAt", void 0);
+//# sourceMappingURL=product-response.dto.js.map
