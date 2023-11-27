@@ -16,13 +16,13 @@ class CategoryResponse {
 exports.CategoryResponse = CategoryResponse;
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: 12
+        example: 1
     }),
     __metadata("design:type", Number)
 ], CategoryResponse.prototype, "id", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: "Cars"
+        example: "Category"
     }),
     __metadata("design:type", String)
 ], CategoryResponse.prototype, "name", void 0);

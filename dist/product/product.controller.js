@@ -25,19 +25,19 @@ let ProductController = class ProductController {
     constructor(productService) {
         this.productService = productService;
     }
-    list() {
+    async list() {
         return this.productService.list();
     }
-    product(id) {
+    async product(id) {
         return this.productService.product(id);
     }
-    create(body) {
+    async create(body) {
         return this.productService.create(body);
     }
-    update(id, body) {
+    async update(id, body) {
         return this.productService.update(id, body);
     }
-    delete(id) {
+    async delete(id) {
         return this.productService.delete(id);
     }
 };
@@ -49,7 +49,7 @@ __decorate([
     (0, common_1.Get)("/list"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProductController.prototype, "list", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -59,7 +59,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProductController.prototype, "product", null);
 __decorate([
     (0, swagger_1.ApiBody)({
@@ -70,9 +70,10 @@ __decorate([
     }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Post)("/create"),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_product_dto_1.CreateProductDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProductController.prototype, "create", null);
 __decorate([
     (0, swagger_1.ApiBody)({
@@ -84,9 +85,10 @@ __decorate([
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
     (0, common_1.Put)("/update/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, update_product_dto_1.UpdateProductDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProductController.prototype, "update", null);
 __decorate([
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
@@ -94,7 +96,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProductController.prototype, "delete", null);
 exports.ProductController = ProductController = __decorate([
     (0, swagger_1.ApiTags)("Product"),

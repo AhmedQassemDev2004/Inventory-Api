@@ -24,7 +24,7 @@ export declare class UserController {
     changePassword(userId: any, body: ChangePasswordDto): Promise<{
         message: string;
     }>;
-    profile(user: any): any;
+    profile(user: any): Promise<any>;
     usersList(): Promise<{
         id: number;
         name: string;

@@ -26,22 +26,22 @@ let SaleController = class SaleController {
     constructor(saleService) {
         this.saleService = saleService;
     }
-    list() {
+    async list() {
         return this.saleService.list();
     }
-    listDaily() {
+    async listDaily() {
         return this.saleService.listDaily();
     }
-    listMonthly() {
+    async listMonthly() {
         return this.saleService.listMonthly();
     }
-    create(userId, body) {
+    async create(userId, body) {
         return this.saleService.create(userId, body);
     }
-    update(id, body) {
+    async update(id, body) {
         return this.saleService.update(id, body);
     }
-    delete(id) {
+    async delete(id) {
         return this.saleService.delete(id);
     }
 };
@@ -53,7 +53,7 @@ __decorate([
     (0, common_1.Get)("/sale/list"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], SaleController.prototype, "list", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -62,7 +62,7 @@ __decorate([
     (0, common_1.Get)("/sale/list/daily"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], SaleController.prototype, "listDaily", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -71,7 +71,7 @@ __decorate([
     (0, common_1.Get)("/sale/list/monthly"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], SaleController.prototype, "listMonthly", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -83,7 +83,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, create_sale_dto_1.CreateSaleDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], SaleController.prototype, "create", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -92,9 +92,10 @@ __decorate([
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
     (0, common_1.Put)("/update/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, update_sale_dto_1.UpdateSaleDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], SaleController.prototype, "update", null);
 __decorate([
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
@@ -102,7 +103,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], SaleController.prototype, "delete", null);
 exports.SaleController = SaleController = __decorate([
     (0, swagger_1.ApiTags)("Sale"),

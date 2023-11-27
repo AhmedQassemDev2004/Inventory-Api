@@ -79,7 +79,7 @@ export class SaleService {
     }
 
     async create(userId: number, body: CreateSaleDto) {
-        const product = await this.prismaService.sale.findUnique({
+        const product = await this.prismaService.product.findUnique({
             where: { id: body.productId }
         });
 
@@ -89,7 +89,7 @@ export class SaleService {
             data: {
                 quantity: body.quantity,
                 totalPrice: body.totalPrice,
-                productId: product.productId,
+                productId: body.productId,
                 userId
             }
         });

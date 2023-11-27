@@ -5,11 +5,6 @@ export declare class SaleController {
     private saleService;
     constructor(saleService: SaleService);
     list(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             category: {
                 id: number;
@@ -24,6 +19,11 @@ export declare class SaleController {
             createdAt: Date;
             updatedAt: Date;
         };
+        user: {
+            id: number;
+            name: string;
+            email: string;
+        };
     } & {
         id: number;
         quantity: number;
@@ -33,11 +33,6 @@ export declare class SaleController {
         createdAt: Date;
     })[]>;
     listDaily(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             id: number;
             name: string;
@@ -46,6 +41,11 @@ export declare class SaleController {
             categoryId: number;
             createdAt: Date;
             updatedAt: Date;
+        };
+        user: {
+            id: number;
+            name: string;
+            email: string;
         };
     } & {
         id: number;
@@ -56,11 +56,6 @@ export declare class SaleController {
         createdAt: Date;
     })[]>;
     listMonthly(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             id: number;
             name: string;
@@ -70,6 +65,11 @@ export declare class SaleController {
             createdAt: Date;
             updatedAt: Date;
         };
+        user: {
+            id: number;
+            name: string;
+            email: string;
+        };
     } & {
         id: number;
         quantity: number;
@@ -78,7 +78,7 @@ export declare class SaleController {
         userId: number;
         createdAt: Date;
     })[]>;
-    create(userId: any, body: CreateSaleDto): Promise<import("@nestjs/common").NotFoundException | {
+    create(userId: any, body: CreateSaleDto): Promise<{
         id: number;
         quantity: number;
         totalPrice: number;

@@ -17,7 +17,7 @@ class CreateCategoryDto {
 exports.CreateCategoryDto = CreateCategoryDto;
 __decorate([
     (0, swagger_1.ApiProperty)({
-        name: "Category 2"
+        example: "Category 2"
     }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),

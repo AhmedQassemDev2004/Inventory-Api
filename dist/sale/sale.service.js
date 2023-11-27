@@ -84,16 +84,16 @@ let SaleService = class SaleService {
         });
     }
     async create(userId, body) {
-        const product = await this.prismaService.sale.findUnique({
+        const product = await this.prismaService.product.findUnique({
             where: { id: body.productId }
         });
         if (!product)
-            return new common_1.NotFoundException();
+            throw new common_1.NotFoundException();
         return await this.prismaService.sale.create({
             data: {
                 quantity: body.quantity,
                 totalPrice: body.totalPrice,
-                productId: product.productId,
+                productId: body.productId,
                 userId
             }
         });

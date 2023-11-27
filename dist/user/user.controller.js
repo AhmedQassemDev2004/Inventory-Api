@@ -27,25 +27,25 @@ let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
-    update(userId, body) {
+    async update(userId, body) {
         return this.userService.update(userId, body);
     }
-    updateUser(userId, body) {
+    async updateUser(userId, body) {
         return this.userService.update(userId, body);
     }
-    changePassword(userId, body) {
+    async changePassword(userId, body) {
         return this.userService.changePassword(userId, body);
     }
-    profile(user) {
+    async profile(user) {
         return user;
     }
-    usersList() {
+    async usersList() {
         return this.userService.usersList();
     }
-    addUser(body) {
+    async addUser(body) {
         return this.userService.addUser(body);
     }
-    deleteUser(userId) {
+    async deleteUser(userId) {
         return this.userService.deleteUser(userId);
     }
 };
@@ -60,7 +60,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, update_dto_1.UpdateUserDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "update", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -73,7 +73,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, update_dto_1.UpdateUserDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "updateUser", null);
 __decorate([
     (0, common_1.Put)("/change-password"),
@@ -81,7 +81,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, change_password_dto_1.ChangePasswordDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "changePassword", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -91,7 +91,7 @@ __decorate([
     __param(0, (0, user_decorator_1.AuthUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "profile", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -101,7 +101,7 @@ __decorate([
     (0, common_1.Get)("/list"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "usersList", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
@@ -113,7 +113,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [add_user_dto_1.AddUserDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "addUser", null);
 __decorate([
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
@@ -122,7 +122,7 @@ __decorate([
     __param(0, (0, common_1.Param)("userId", common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UserController.prototype, "deleteUser", null);
 exports.UserController = UserController = __decorate([
     (0, swagger_1.ApiTags)("User"),

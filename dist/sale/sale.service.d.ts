@@ -1,4 +1,3 @@
-import { NotFoundException } from '@nestjs/common';
 import { CreateSaleDto } from './dto/create-sale.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UpdateSaleDto } from './dto/update-sale.dto';
@@ -6,11 +5,6 @@ export declare class SaleService {
     private prismaService;
     constructor(prismaService: PrismaService);
     list(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             category: {
                 id: number;
@@ -24,6 +18,11 @@ export declare class SaleService {
             categoryId: number;
             createdAt: Date;
             updatedAt: Date;
+        };
+        user: {
+            id: number;
+            name: string;
+            email: string;
         };
     } & {
         id: number;
@@ -42,11 +41,6 @@ export declare class SaleService {
         createdAt: Date;
     }>;
     listDaily(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             id: number;
             name: string;
@@ -55,6 +49,11 @@ export declare class SaleService {
             categoryId: number;
             createdAt: Date;
             updatedAt: Date;
+        };
+        user: {
+            id: number;
+            name: string;
+            email: string;
         };
     } & {
         id: number;
@@ -65,11 +64,6 @@ export declare class SaleService {
         createdAt: Date;
     })[]>;
     listMonthly(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             id: number;
             name: string;
@@ -79,6 +73,11 @@ export declare class SaleService {
             createdAt: Date;
             updatedAt: Date;
         };
+        user: {
+            id: number;
+            name: string;
+            email: string;
+        };
     } & {
         id: number;
         quantity: number;
@@ -87,7 +86,7 @@ export declare class SaleService {
         userId: number;
         createdAt: Date;
     })[]>;
-    create(userId: number, body: CreateSaleDto): Promise<NotFoundException | {
+    create(userId: number, body: CreateSaleDto): Promise<{
         id: number;
         quantity: number;
         totalPrice: number;
