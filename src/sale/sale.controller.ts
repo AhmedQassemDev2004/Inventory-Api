@@ -17,7 +17,7 @@ export class SaleController {
         type: [SaleResponse]
     })
     @Get("/sale/list")
-    list() {
+    async list() {
         return this.saleService.list();
     }
 
@@ -25,7 +25,7 @@ export class SaleController {
         type: [SaleResponse]
     })
     @Get("/sale/list/daily")
-    listDaily() {
+    async listDaily() {
         return this.saleService.listDaily();
     }
 
@@ -33,7 +33,7 @@ export class SaleController {
         type: [SaleResponse]
     })
     @Get("/sale/list/monthly")
-    listMonthly() {
+    async listMonthly() {
         return this.saleService.listMonthly();
     }
 
@@ -42,7 +42,7 @@ export class SaleController {
     })
     @Roles(Role.ADMIN)
     @Post("/create")
-    create(@AuthUser("id") userId, @Body() body: CreateSaleDto) {
+    async create(@AuthUser("id") userId, @Body() body: CreateSaleDto) {
         return this.saleService.create(userId, body);
     }
 
@@ -51,13 +51,13 @@ export class SaleController {
     })
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Put("/update/:id")
-    update(@Param("id", ParseIntPipe) id: number, body: UpdateSaleDto) {
+    async update(@Param("id", ParseIntPipe) id: number, body: UpdateSaleDto) {
         return this.saleService.update(id, body);
     }
 
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Delete("/delete/:id")
-    delete(@Param("id", ParseIntPipe) id: number) {
+    async delete(@Param("id", ParseIntPipe) id: number) {
         return this.saleService.delete(id);
     }
 

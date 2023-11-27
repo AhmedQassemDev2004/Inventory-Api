@@ -16,7 +16,7 @@ export class ProductController {
         type: [ProductResponse]
     })
     @Get("/list")
-    list() {
+    async list() {
         return this.productService.list();
     }
 
@@ -24,7 +24,7 @@ export class ProductController {
         type: ProductResponse
     })
     @Get("/:id")
-    product(@Param("id", ParseIntPipe) id: number) {
+    async product(@Param("id", ParseIntPipe) id: number) {
         return this.productService.product(id);
     }
 
@@ -36,7 +36,7 @@ export class ProductController {
     })
     @Roles(Role.ADMIN)
     @Post("/create")
-    create(body: CreateProductDto) {
+    async create(body: CreateProductDto) {
         return this.productService.create(body);
     }
 
@@ -48,13 +48,13 @@ export class ProductController {
     })
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Put("/update/:id")
-    update(@Param("id", ParseIntPipe) id: number, body: UpdateProductDto) {
+    async update(@Param("id", ParseIntPipe) id: number, body: UpdateProductDto) {
         return this.productService.update(id, body);
     }
 
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Delete("/delete/:id")
-    delete(@Param("id", ParseIntPipe) id: number) {
+    async delete(@Param("id", ParseIntPipe) id: number) {
         return this.productService.delete(id);
     }
 }

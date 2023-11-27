@@ -6,8 +6,7 @@ export class AppController {
     @Public()
     @Get("/")
     hi() {
-        return `
-                    <!DOCTYPE html>
+        return `<!DOCTYPE html>
             <html lang="en">
 
             <head>

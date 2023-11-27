@@ -18,7 +18,7 @@ export class CategoryController {
         type: [CategoryResponse] as any, // Use 'as any' to bypass TypeScript error
     })
     @Get("/list")
-    list() {
+    async list() {
         return this.categoryService.list();
     }
 
@@ -28,7 +28,7 @@ export class CategoryController {
         type: CategoryResponse, // Use 'as any' to bypass TypeScript error
     })
     @Get("/:id")
-    product(@Param("id", ParseIntPipe) id: number) {
+    async product(@Param("id", ParseIntPipe) id: number) {
         return this.categoryService.product(id);
     }
 
@@ -43,7 +43,7 @@ export class CategoryController {
     })
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Post("/create")
-    create(body: CreateCategoryDto) {
+    async create(body: CreateCategoryDto) {
         return this.categoryService.create(body);
     }
 
@@ -57,13 +57,13 @@ export class CategoryController {
     })
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Put("/update/:id")
-    update(@Param("id", ParseIntPipe) id: number, body: UpdateCategoryDto) {
+    async update(@Param("id", ParseIntPipe) id: number, body: UpdateCategoryDto) {
         return this.categoryService.update(id, body);
     }
 
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Delete("/delete/:id")
-    delete(@Param("id", ParseIntPipe) id: number) {
+    async delete(@Param("id", ParseIntPipe) id: number) {
         return this.categoryService.delete(id);
     }
 }
