@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -36,7 +36,7 @@ export class ProductController {
     })
     @Roles(Role.ADMIN)
     @Post("/create")
-    async create(body: CreateProductDto) {
+    async create(@Body() body: CreateProductDto) {
         return this.productService.create(body);
     }
 

@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category';
 import { UpdateCategoryDto } from './dto/update-category';
@@ -43,7 +43,7 @@ export class CategoryController {
     })
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Post("/create")
-    async create(body: CreateCategoryDto) {
+    async create(@Body() body: CreateCategoryDto) {
         return this.categoryService.create(body);
     }
 

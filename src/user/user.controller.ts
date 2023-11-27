@@ -19,7 +19,7 @@ export class UserController {
     })
     @Put("/update")
     @HttpCode(200)
-    update(@AuthUser("id") userId, @Body() body: UpdateUserDto) {
+    async update(@AuthUser("id") userId, @Body() body: UpdateUserDto) {
         return this.userService.update(userId, body);
     }
 
@@ -29,13 +29,13 @@ export class UserController {
     @Roles(Role.ADMIN)
     @Put("/update/:userId")
     @HttpCode(200)
-    updateUser(@Param("userId") userId, @Body() body: UpdateUserDto) {
+    async updateUser(@Param("userId") userId, @Body() body: UpdateUserDto) {
         return this.userService.update(userId, body);
     }
 
 
     @Put("/change-password")
-    changePassword(@AuthUser("id") userId, @Body() body: ChangePasswordDto) {
+    async changePassword(@AuthUser("id") userId, @Body() body: ChangePasswordDto) {
         return this.userService.changePassword(userId, body);
     }
 
@@ -43,7 +43,7 @@ export class UserController {
         type: UserResponseDto
     })
     @Get("/profile")
-    profile(@AuthUser() user) {
+    async profile(@AuthUser() user) {
         return user;
     }
 
@@ -52,7 +52,7 @@ export class UserController {
     })
     @Roles(Role.ADMIN)
     @Get("/list")
-    usersList() {
+    async usersList() {
         return this.userService.usersList();
     }
 
@@ -62,14 +62,14 @@ export class UserController {
     @Roles(Role.ADMIN)
     @Post("/add")
     @HttpCode(201)
-    addUser(@Body() body: AddUserDto) {
+    async addUser(@Body() body: AddUserDto) {
         return this.userService.addUser(body);
     }
 
     @Roles(Role.ADMIN)
     @Delete("/delete/:userId")
     @HttpCode(200)
-    deleteUser(@Param("userId", ParseIntPipe) userId: number) {
+    async deleteUser(@Param("userId", ParseIntPipe) userId: number) {
         return this.userService.deleteUser(userId);
     }
 }
