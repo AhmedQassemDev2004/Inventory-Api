@@ -51,7 +51,7 @@ export class SaleController {
     })
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Put("/update/:id")
-    async update(@Param("id", ParseIntPipe) id: number, body: UpdateSaleDto) {
+    async update(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateSaleDto) {
         return this.saleService.update(id, body);
     }
 

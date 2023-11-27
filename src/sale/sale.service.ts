@@ -83,7 +83,7 @@ export class SaleService {
             where: { id: body.productId }
         });
 
-        if (!product) return new NotFoundException();
+        if (!product) throw new NotFoundException();
 
         return await this.prismaService.sale.create({
             data: {

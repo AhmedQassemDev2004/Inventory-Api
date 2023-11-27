@@ -48,7 +48,7 @@ export class ProductController {
     })
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Put("/update/:id")
-    async update(@Param("id", ParseIntPipe) id: number, body: UpdateProductDto) {
+    async update(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateProductDto) {
         return this.productService.update(id, body);
     }
 

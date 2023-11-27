@@ -57,7 +57,7 @@ export class CategoryController {
     })
     @Roles(Role.ADMIN, Role.SPECIAL)
     @Put("/update/:id")
-    async update(@Param("id", ParseIntPipe) id: number, body: UpdateCategoryDto) {
+    async update(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateCategoryDto) {
         return this.categoryService.update(id, body);
     }
 
