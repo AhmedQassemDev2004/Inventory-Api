@@ -16,7 +16,7 @@ export class SaleController {
     @ApiResponse({
         type: [SaleResponse]
     })
-    @Get("/sale/list")
+    @Get("/list")
     async list() {
         return this.saleService.list();
     }
@@ -24,7 +24,7 @@ export class SaleController {
     @ApiResponse({
         type: [SaleResponse]
     })
-    @Get("/sale/list/daily")
+    @Get("/list/daily")
     async listDaily() {
         return this.saleService.listDaily();
     }
@@ -32,7 +32,7 @@ export class SaleController {
     @ApiResponse({
         type: [SaleResponse]
     })
-    @Get("/sale/list/monthly")
+    @Get("/list/monthly")
     async listMonthly() {
         return this.saleService.listMonthly();
     }

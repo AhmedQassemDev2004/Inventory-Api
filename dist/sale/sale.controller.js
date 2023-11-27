@@ -50,7 +50,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({
         type: [sale_response_dto_1.SaleResponse]
     }),
-    (0, common_1.Get)("/sale/list"),
+    (0, common_1.Get)("/list"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -59,7 +59,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({
         type: [sale_response_dto_1.SaleResponse]
     }),
-    (0, common_1.Get)("/sale/list/daily"),
+    (0, common_1.Get)("/list/daily"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -68,7 +68,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({
         type: [sale_response_dto_1.SaleResponse]
     }),
-    (0, common_1.Get)("/sale/list/monthly"),
+    (0, common_1.Get)("/list/monthly"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
