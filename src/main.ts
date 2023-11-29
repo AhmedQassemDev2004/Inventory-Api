@@ -7,10 +7,12 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   app.enableCors({
     origin: "http://localhost:3000",
     credentials: true
   });
+
   app.useGlobalPipes(new ValidationPipe());
   app.use(
     session({
@@ -18,7 +20,7 @@ async function bootstrap() {
       resave: false,
       saveUninitialized: false,
       cookie: {
-        httpOnly: true,
+        secure: true,
         maxAge: 3600000
       }
     })
