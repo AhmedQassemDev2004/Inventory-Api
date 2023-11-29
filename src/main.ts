@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as session from "express-session"
+import * as session from "express-session";
+import * as connectPgSimple from 'connect-pg-simple';
 import * as passport from 'passport';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -20,7 +21,7 @@ async function bootstrap() {
       resave: false,
       saveUninitialized: false,
       cookie: {
-        secure: true,
+        httpOnly:true,
         maxAge: 3600000
       }
     })
@@ -30,7 +31,7 @@ async function bootstrap() {
   app.use(passport.session())
 
 
-  // Swagger 
+  // Swagger
   const config = new DocumentBuilder()
     .setTitle('Inventory')
     .setDescription('Inventory api documentation')
