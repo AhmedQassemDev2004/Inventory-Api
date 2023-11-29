@@ -8,12 +8,19 @@ const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
-    app.enableCors();
+    app.enableCors({
+        origin: "http://localhost:3000",
+        credentials: true
+    });
     app.useGlobalPipes(new common_1.ValidationPipe());
     app.use(session({
         secret: "session-secret",
         resave: false,
-        cookie: { maxAge: 3600000 }
+        saveUninitialized: false,
+        cookie: {
+            httpOnly: true,
+            maxAge: 3600000
+        }
     }));
     app.use(passport.initialize());
     app.use(passport.session());
