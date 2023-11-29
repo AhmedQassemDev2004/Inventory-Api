@@ -6,13 +6,14 @@ import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { PrismaClient } from '@prisma/client';
 import * as connectPgSimple from "connect-pg-simple";
+import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
     origin: "http://localhost:3000",
-    credentials: true
+    credentials: true,
   });
 
   app.useGlobalPipes(new ValidationPipe());
@@ -33,6 +34,7 @@ async function bootstrap() {
       secure: true,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24,
+      sameSite: "none"
     },
   }))
 
