@@ -1,10 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as session from "express-session";
-import * as connectPgSimple from 'connect-pg-simple';
 import * as passport from 'passport';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { PrismaClient } from '@prisma/client';
+import * as connectPgSimple from "connect-pg-simple";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,17 +16,25 @@ async function bootstrap() {
   });
 
   app.useGlobalPipes(new ValidationPipe());
-  app.use(
-    session({
-      secret: "session-secret",
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        httpOnly:true,
-        maxAge: 3600000
-      }
-    })
-  )
+
+  const PgSessionStore = connectPgSimple(session);
+
+  app.use(session({
+    store: new PgSessionStore({
+      conObject: {
+        connectionString: process.env.DATABASE_URL + "?ssl=true"
+      },
+      tableName: "session"
+    }),
+    secret: "myscecret",
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24,
+    },
+  }))
 
   app.use(passport.initialize())
   app.use(passport.session())

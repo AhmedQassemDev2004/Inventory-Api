@@ -41,6 +41,12 @@ Table Sale {
   createdAt DateTime [default: `now()`, not null]
 }
 
+Table session {
+  sid String [pk]
+  sess Json [not null]
+  expire DateTime [not null]
+}
+
 Enum Role {
   ADMIN
   SPECIAL
