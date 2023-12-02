@@ -105,4 +105,10 @@ export class UserService {
             message: "Deleted successfully"
         }
     }
+
+    async getUser(userId: number) {
+        let user = await this.findOneById(userId);
+        delete user.password;
+        return user;
+    }
 }

@@ -40,6 +40,24 @@ export declare class SaleService {
         userId: number;
         createdAt: Date;
     }>;
+    getSale(id: number): Promise<{
+        product: {
+            id: number;
+            name: string;
+            price: number;
+            image: string;
+            categoryId: number;
+            createdAt: Date;
+            updatedAt: Date;
+        };
+    } & {
+        id: number;
+        quantity: number;
+        totalPrice: number;
+        productId: number;
+        userId: number;
+        createdAt: Date;
+    }>;
     listDaily(): Promise<({
         user: {
             name: string;

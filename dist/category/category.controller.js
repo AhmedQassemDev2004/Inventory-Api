@@ -74,7 +74,7 @@ __decorate([
         description: 'Create new category',
         type: category_response_dto_1.CategoryResponse,
     }),
-    (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
+    (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Post)("/create"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -90,7 +90,7 @@ __decorate([
         description: 'Update category',
         type: category_response_dto_1.CategoryResponse,
     }),
-    (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
+    (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Put)("/update/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
@@ -99,7 +99,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CategoryController.prototype, "update", null);
 __decorate([
-    (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
+    (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Delete)("/delete/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __metadata("design:type", Function),

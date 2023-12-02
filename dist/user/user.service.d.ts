@@ -55,4 +55,12 @@ export declare class UserService {
     deleteUser(userId: number): Promise<{
         message: string;
     }>;
+    getUser(userId: number): Promise<{
+        id: number;
+        name: string;
+        password: string;
+        email: string;
+        role: import(".prisma/client").$Enums.Role;
+        lastLogin: Date;
+    }>;
 }

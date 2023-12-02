@@ -41,6 +41,14 @@ let SaleService = class SaleService {
             throw new common_1.NotFoundException();
         return sale;
     }
+    async getSale(id) {
+        return this.prismaService.sale.findUnique({
+            where: { id },
+            include: {
+                product: true,
+            }
+        });
+    }
     async listDaily() {
         const today = new Date();
         return this.prismaService.sale.findMany({

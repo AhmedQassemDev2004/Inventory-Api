@@ -41,7 +41,7 @@ export class CategoryController {
         description: 'Create new category',
         type: CategoryResponse, // Use 'as any' to bypass TypeScript error
     })
-    @Roles(Role.ADMIN, Role.SPECIAL)
+    @Roles(Role.ADMIN)
     @Post("/create")
     async create(@Body() body: CreateCategoryDto) {
         return this.categoryService.create(body);
@@ -55,13 +55,13 @@ export class CategoryController {
         description: 'Update category',
         type: CategoryResponse, // Use 'as any' to bypass TypeScript error
     })
-    @Roles(Role.ADMIN, Role.SPECIAL)
+    @Roles(Role.ADMIN)
     @Put("/update/:id")
     async update(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateCategoryDto) {
         return this.categoryService.update(id, body);
     }
 
-    @Roles(Role.ADMIN, Role.SPECIAL)
+    @Roles(Role.ADMIN)
     @Delete("/delete/:id")
     async delete(@Param("id", ParseIntPipe) id: number) {
         return this.categoryService.delete(id);

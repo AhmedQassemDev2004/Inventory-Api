@@ -49,7 +49,6 @@ Table session {
 
 Enum Role {
   ADMIN
-  SPECIAL
   USER
 }
 

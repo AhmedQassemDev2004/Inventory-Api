@@ -33,6 +33,15 @@ export class SaleService {
         return sale;
     }
 
+    async getSale(id: number) {
+        return this.prismaService.sale.findUnique({
+            where: { id },
+            include: {
+                product: true,
+            }
+        })
+    }
+
     async listDaily() {
         const today = new Date();
         return this.prismaService.sale.findMany({

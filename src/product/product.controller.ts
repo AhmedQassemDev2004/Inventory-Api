@@ -46,13 +46,13 @@ export class ProductController {
     @ApiResponse({
         type: ProductResponse
     })
-    @Roles(Role.ADMIN, Role.SPECIAL)
+    @Roles(Role.ADMIN)
     @Put("/update/:id")
     async update(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateProductDto) {
         return this.productService.update(id, body);
     }
 
-    @Roles(Role.ADMIN, Role.SPECIAL)
+    @Roles(Role.ADMIN)
     @Delete("/delete/:id")
     async delete(@Param("id", ParseIntPipe) id: number) {
         return this.productService.delete(id);

@@ -96,6 +96,11 @@ let UserService = class UserService {
             message: "Deleted successfully"
         };
     }
+    async getUser(userId) {
+        let user = await this.findOneById(userId);
+        delete user.password;
+        return user;
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

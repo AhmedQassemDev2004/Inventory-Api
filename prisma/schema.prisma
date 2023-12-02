@@ -13,7 +13,6 @@ datasource db {
 
 enum Role {
   ADMIN
-  SPECIAL
   USER
 }
 

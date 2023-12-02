@@ -33,7 +33,7 @@ let CategoryService = class CategoryService {
         const category = await this.prismaService.category.findUnique({ where: { id } });
         if (!category)
             throw new common_1.NotFoundException();
-        return this.prismaService.product.update({
+        return this.prismaService.category.update({
             where: { id },
             data: {
                 name: body.name

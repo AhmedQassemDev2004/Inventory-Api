@@ -26,10 +26,7 @@ async function bootstrap() {
         saveUninitialized: false,
         resave: false,
         cookie: {
-            secure: true,
-            httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24,
-            sameSite: "none"
         },
     }));
     app.use(passport.initialize());

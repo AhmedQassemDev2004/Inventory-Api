@@ -39,6 +39,9 @@ let UserController = class UserController {
     async profile(user) {
         return user;
     }
+    async getUser(userId) {
+        return this.userService.getUser(userId);
+    }
     async usersList() {
         return this.userService.usersList();
     }
@@ -69,7 +72,7 @@ __decorate([
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Put)("/update/:userId"),
     (0, common_1.HttpCode)(200),
-    __param(0, (0, common_1.Param)("userId")),
+    __param(0, (0, common_1.Param)("userId", common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, update_dto_1.UpdateUserDto]),
@@ -93,6 +96,16 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "profile", null);
+__decorate([
+    (0, swagger_1.ApiResponse)({
+        type: user_response_dto_1.UserResponseDto
+    }),
+    (0, common_1.Get)("/profile/:userId"),
+    __param(0, (0, common_1.Param)("userId", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getUser", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
         type: [user_response_dto_1.UserResponseDto]

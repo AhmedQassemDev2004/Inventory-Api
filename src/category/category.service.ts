@@ -28,7 +28,7 @@ export class CategoryService {
         if (!category)
             throw new NotFoundException();
 
-        return this.prismaService.product.update({
+        return this.prismaService.category.update({
             where: { id },
             data: {
                 name: body.name

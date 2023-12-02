@@ -40,6 +40,13 @@ export class SaleController {
     @ApiResponse({
         type: SaleResponse
     })
+    @Get("/:id")
+    async getSale(@Param("id", ParseIntPipe) id) {
+        return this.saleService.getSale(id);
+    }
+    @ApiResponse({
+        type: SaleResponse
+    })
     @Roles(Role.ADMIN)
     @Post("/create")
     async create(@AuthUser("id") userId, @Body() body: CreateSaleDto) {
@@ -49,13 +56,13 @@ export class SaleController {
     @ApiResponse({
         type: SaleResponse
     })
-    @Roles(Role.ADMIN, Role.SPECIAL)
+    @Roles(Role.ADMIN)
     @Put("/update/:id")
     async update(@Param("id", ParseIntPipe) id: number, @Body() body: UpdateSaleDto) {
         return this.saleService.update(id, body);
     }
 
-    @Roles(Role.ADMIN, Role.SPECIAL)
+    @Roles(Role.ADMIN)
     @Delete("/delete/:id")
     async delete(@Param("id", ParseIntPipe) id: number) {
         return this.saleService.delete(id);

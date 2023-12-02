@@ -19,11 +19,6 @@ export declare class CategoryService {
     update(id: number, body: UpdateCategoryDto): Promise<{
         id: number;
         name: string;
-        price: number;
-        image: string;
-        categoryId: number;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     delete(id: number): Promise<{
         message: string;

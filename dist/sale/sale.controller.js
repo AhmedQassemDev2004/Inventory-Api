@@ -35,6 +35,9 @@ let SaleController = class SaleController {
     async listMonthly() {
         return this.saleService.listMonthly();
     }
+    async getSale(id) {
+        return this.saleService.getSale(id);
+    }
     async create(userId, body) {
         return this.saleService.create(userId, body);
     }
@@ -77,6 +80,16 @@ __decorate([
     (0, swagger_1.ApiResponse)({
         type: sale_response_dto_1.SaleResponse
     }),
+    (0, common_1.Get)("/:id"),
+    __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], SaleController.prototype, "getSale", null);
+__decorate([
+    (0, swagger_1.ApiResponse)({
+        type: sale_response_dto_1.SaleResponse
+    }),
     (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Post)("/create"),
     __param(0, (0, user_decorator_1.AuthUser)("id")),
@@ -89,7 +102,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({
         type: sale_response_dto_1.SaleResponse
     }),
-    (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
+    (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Put)("/update/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
@@ -98,7 +111,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SaleController.prototype, "update", null);
 __decorate([
-    (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
+    (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Delete)("/delete/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __metadata("design:type", Function),

@@ -25,6 +25,14 @@ export declare class UserController {
         message: string;
     }>;
     profile(user: any): Promise<any>;
+    getUser(userId: any): Promise<{
+        id: number;
+        name: string;
+        password: string;
+        email: string;
+        role: import(".prisma/client").$Enums.Role;
+        lastLogin: Date;
+    }>;
     usersList(): Promise<{
         id: number;
         name: string;

@@ -29,7 +29,7 @@ export class UserController {
     @Roles(Role.ADMIN)
     @Put("/update/:userId")
     @HttpCode(200)
-    async updateUser(@Param("userId") userId, @Body() body: UpdateUserDto) {
+    async updateUser(@Param("userId", ParseIntPipe) userId, @Body() body: UpdateUserDto) {
         return this.userService.update(userId, body);
     }
 
@@ -45,6 +45,14 @@ export class UserController {
     @Get("/profile")
     async profile(@AuthUser() user) {
         return user;
+    }
+
+    @ApiResponse({
+        type: UserResponseDto
+    })
+    @Get("/profile/:userId")
+    async getUser(@Param("userId", ParseIntPipe) userId) {
+        return this.userService.getUser(userId);
     }
 
     @ApiResponse({

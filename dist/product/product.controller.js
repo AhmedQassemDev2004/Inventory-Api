@@ -82,7 +82,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({
         type: product_response_dto_1.ProductResponse
     }),
-    (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
+    (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Put)("/update/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
@@ -91,7 +91,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "update", null);
 __decorate([
-    (0, role_decorator_1.Roles)(client_1.Role.ADMIN, client_1.Role.SPECIAL),
+    (0, role_decorator_1.Roles)(client_1.Role.ADMIN),
     (0, common_1.Delete)("/delete/:id"),
     __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
     __metadata("design:type", Function),

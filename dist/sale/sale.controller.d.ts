@@ -78,6 +78,24 @@ export declare class SaleController {
         userId: number;
         createdAt: Date;
     })[]>;
+    getSale(id: any): Promise<{
+        product: {
+            id: number;
+            name: string;
+            price: number;
+            image: string;
+            categoryId: number;
+            createdAt: Date;
+            updatedAt: Date;
+        };
+    } & {
+        id: number;
+        quantity: number;
+        totalPrice: number;
+        productId: number;
+        userId: number;
+        createdAt: Date;
+    }>;
     create(userId: any, body: CreateSaleDto): Promise<{
         id: number;
         quantity: number;
