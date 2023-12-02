@@ -5,9 +5,9 @@ export class UpdateSaleDto {
     @ApiProperty({
         example: 1
     })
+    @IsOptional()
     @IsNumber()
     @IsPositive()
-    @IsOptional()
     quantity: number;
 
     @ApiProperty({

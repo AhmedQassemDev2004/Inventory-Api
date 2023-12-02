@@ -19,9 +19,9 @@ __decorate([
     (0, swagger_1.ApiProperty)({
         example: 1
     }),
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsPositive)(),
-    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Number)
 ], UpdateSaleDto.prototype, "quantity", void 0);
 __decorate([

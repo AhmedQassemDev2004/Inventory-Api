@@ -20,7 +20,12 @@ let ProductService = class ProductService {
         return await this.prismaService.product.findMany();
     }
     async product(id) {
-        return await this.prismaService.product.findUnique({ where: { id } });
+        return await this.prismaService.product.findUnique({
+            where: { id },
+            include: {
+                category: true
+            }
+        });
     }
     async create(body) {
         return await this.prismaService.product.create({

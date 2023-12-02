@@ -5,11 +5,6 @@ export declare class SaleService {
     private prismaService;
     constructor(prismaService: PrismaService);
     list(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             category: {
                 id: number;
@@ -23,6 +18,11 @@ export declare class SaleService {
             categoryId: number;
             createdAt: Date;
             updatedAt: Date;
+        };
+        user: {
+            name: string;
+            id: number;
+            email: string;
         };
     } & {
         id: number;
@@ -59,11 +59,6 @@ export declare class SaleService {
         createdAt: Date;
     }>;
     listDaily(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             id: number;
             name: string;
@@ -72,6 +67,11 @@ export declare class SaleService {
             categoryId: number;
             createdAt: Date;
             updatedAt: Date;
+        };
+        user: {
+            name: string;
+            id: number;
+            email: string;
         };
     } & {
         id: number;
@@ -82,11 +82,6 @@ export declare class SaleService {
         createdAt: Date;
     })[]>;
     listMonthly(): Promise<({
-        user: {
-            name: string;
-            email: string;
-            id: number;
-        };
         product: {
             id: number;
             name: string;
@@ -95,6 +90,11 @@ export declare class SaleService {
             categoryId: number;
             createdAt: Date;
             updatedAt: Date;
+        };
+        user: {
+            name: string;
+            id: number;
+            email: string;
         };
     } & {
         id: number;

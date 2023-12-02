@@ -14,6 +14,11 @@ export declare class ProductController {
         updatedAt: Date;
     }[]>;
     product(id: number): Promise<{
+        category: {
+            id: number;
+            name: string;
+        };
+    } & {
         id: number;
         name: string;
         price: number;

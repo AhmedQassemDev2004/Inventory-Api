@@ -12,7 +12,12 @@ export class ProductService {
     }
 
     async product(id: number) {
-        return await this.prismaService.product.findUnique({ where: { id } });
+        return await this.prismaService.product.findUnique({
+            where: { id },
+            include: {
+                category: true
+            }
+        });
     }
 
     async create(body: CreateProductDto) {
